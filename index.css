@@ -1,0 +1,11 @@
+.puzzleCell {
+  background-color: #ebebeb;
+  border-width: thin;
+  vertical-align: top;
+  margin-top: -2px;
+  width: 40px;
+  height: 40px;
+}
+.puzzleCell:hover {
+  background-color: #ebebeb;
+}
