@@ -2,10 +2,36 @@
   background-color: #ebebeb;
   border-width: thin;
   vertical-align: top;
-  margin-top: -2px;
+  font-size: 20px;
+  margin-top: -1px;
   width: 40px;
   height: 40px;
 }
 .puzzleCell:hover {
   background-color: #ebebeb;
+}
+.selectedCell {
+  border-color: black;
+  border-width: medium;
+  outline: none;
+  box-shadow: none;
+}
+.keyboardButton {
+  background-color: #696fdb;
+  color: white;
+  font-size: 30px;
+  border-width: thin;
+  border-radius: 20%;
+  width: 40px;
+  height: 40px;
+}
+.gameTitle {
+  font-size: 40px;
+  font-family: cursive;
+}
+.rightBorder {
+  border-right-width: 4px;
+}
+.bottomBorder {
+  border-bottom-width: 4px;
 }
