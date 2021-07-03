@@ -2,6 +2,7 @@ var gameMatrix = [];
 var selectedCellId = '';
 
 function createBoard() {
+
   var boardStart = document.getElementById('gameBoard');
 
   for (var i = 0; i < 9; ++i) {
@@ -13,12 +14,8 @@ function createBoard() {
 
   for (var i = 0; i < 9; ++i) {
     for (var j = 0; j < 9; ++j) {
-      var cell = document.createElement('BUTTON');
       var cellId = i * 9 + j;
-      boardStart.appendChild(cell);
-      cell.setAttribute('class', 'puzzleCell');
-      cell.setAttribute('id', cellId);
-      cell.setAttribute('onclick', 'selectCell(this.id)');
+      createCell(cellId, boardStart);
     }
 
     var br = document.createElement('br');
@@ -111,6 +108,14 @@ function switch3Left(line) {
   for (var i = 0; i < 3; ++i) {
     gameMatrix[line][i + 6] = gameMatrix[line - 1][i];
   }
+}
+
+function createCell(cellId, boardStart) {
+  var cell = document.createElement('BUTTON');
+  boardStart.appendChild(cell);
+  cell.setAttribute('class', 'puzzleCell');
+  cell.setAttribute('id', cellId);
+  cell.setAttribute('onclick', 'selectCell(this.id)');
 }
 
 function selectCell(clickedCellId) {
