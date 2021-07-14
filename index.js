@@ -147,7 +147,7 @@ function placeNumber(keyboardButtonId) {
 
   var line = parseInt(selectedCell[0].id / 9);
   var column = selectedCell[0].id - line * 9;
-
+  console.log(line + column);
   if (selectedCell.length !== 0) {
     selectedCell[0].innerHTML = keyboardButtonId % 10;
     gameMatrix[line][column] = parseInt(selectedCell[0].innerHTML);
@@ -235,9 +235,10 @@ function notInBox(gameMatrix, line, column, startLine, startColumn) {
   for (var i = 0; i < 3; ++i) {
     for (var j = 0; j < 3; ++j) {
       var currentElement = gameMatrix[i + startLine][j + startColumn];
-      if (i !== line || j !== column) {
+      if (i + startLine !== line || j + startColumn !== column) {
         if (st.has(currentElement)) {
           document.getElementById((i + startLine) * 9 + (j + startColumn)).style.color = 'red';
+          console.log(st);
           return false;
         }
       }
@@ -248,9 +249,9 @@ function notInBox(gameMatrix, line, column, startLine, startColumn) {
     }
   }
 
-  for (var line = 0; line < 3; ++line) {
-    for (var column = 0; column < 3; ++column) {
-      document.getElementById((line + startLine) * 9 + (column + startColumn)).style.color = 'black';
+  for (var i = 0; i < 3; ++i) {
+    for (var j = 0; j < 3; ++j) {
+      document.getElementById((i + startLine) * 9 + (j + startColumn)).style.color = 'black';
     }
   }
 
