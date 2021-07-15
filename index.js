@@ -1,8 +1,14 @@
 var gameMatrix = [];
 var selectedCellId = '';
 
-function createBoard() {
+function createGame() {
 
+  createGrid();
+  createKeyBoard();
+
+}
+
+function createGrid() {
   var boardStart = document.getElementById('gameBoard');
 
   for (var i = 0; i < 9; ++i) {
@@ -20,26 +26,6 @@ function createBoard() {
 
     var br = document.createElement('br');
     boardStart.appendChild(br);
-  }
-
-  for (var i = 1; i <= 10; ++i) {
-    boardStart = document.getElementById('keyboard');
-    var keyboardButton = document.createElement('BUTTON');
-    var id = 100 + i;
-
-    boardStart.appendChild(keyboardButton);
-    keyboardButton.setAttribute('id', id);
-    keyboardButton.setAttribute('class', 'keyboardButton');
-    if (i <= 9) {
-      keyboardButton.setAttribute('onclick', 'placeNumber(this.id)');
-
-      document.getElementById(id).innerHTML = i;
-    }
-
-    if (i === 10) {
-      keyboardButton.setAttribute('onclick', 'eraseNumber(this.id)');
-      document.getElementById(id).innerHTML = '<i class="fas fa-eraser"></i>';
-    }
   }
 
   for (var i = 2; i < 81; i += 3) {
@@ -82,6 +68,28 @@ function createBoard() {
         document.getElementById(i * 9 + j).innerHTML = gameMatrix[i][j];
         document.getElementById(i * 9 + j).classList.add('initialPuzzleCell');
       }
+    }
+  }
+}
+
+function createKeyBoard() {
+  for (var i = 1; i <= 10; ++i) {
+    var boardStart = document.getElementById('keyboard');
+    var keyboardButton = document.createElement('BUTTON');
+    var id = 100 + i;
+
+    boardStart.appendChild(keyboardButton);
+    keyboardButton.setAttribute('id', id);
+    keyboardButton.setAttribute('class', 'keyboardButton');
+    if (i <= 9) {
+      keyboardButton.setAttribute('onclick', 'placeNumber(this.id)');
+
+      document.getElementById(id).innerHTML = i;
+    }
+
+    if (i === 10) {
+      keyboardButton.setAttribute('onclick', 'eraseNumber(this.id)');
+      document.getElementById(id).innerHTML = '<i class="fas fa-eraser"></i>';
     }
   }
 }
